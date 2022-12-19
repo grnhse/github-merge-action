@@ -13,6 +13,8 @@ jobs:
         with:
           ref: 'main'
           fetch-depth: '0'
-      - run: |
+      - name: merge
+        continue-on-error: true
+        run: |
           git merge --ff-only ${{ github.event.pull_request.head.sha }}
           git push
